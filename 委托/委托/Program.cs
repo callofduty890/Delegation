@@ -2,25 +2,15 @@
 
 namespace 委托
 {
+    //定义了一个委托
+    public delegate void GreetingDelegate(string name);
+
     class Program
     {
-        //确定语言了类型
-        public enum Language
-        {
-            English,Chines
-        }
 
-        public static void Greet_People(string name,Language lang)
+        public static void Greet_People(string name,GreetingDelegate MakeGreeting)
         {
-            switch (lang)
-            {
-                case Language.English:
-                    English_Greeting(name);
-                    break;
-                case Language.Chines:
-                    Chinese_Greeting(name);
-                    break;
-            }
+            MakeGreeting(name);
         }
 
         public static void English_Greeting(string name)
@@ -35,8 +25,8 @@ namespace 委托
 
         static void Main(string[] args)
         {
-            Greet_People("Tank", Language.English);
-            Greet_People("李梅梅", Language.Chines);
+            Greet_People("Tank", English_Greeting);
+            Greet_People("李梅梅", Chinese_Greeting);
             Console.ReadLine();
 
         }
