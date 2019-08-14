@@ -25,17 +25,19 @@ namespace 委托
 
         static void Main(string[] args)
         {
-            //Greet_People("Tank", English_Greeting);
-            //Greet_People("李梅梅", Chinese_Greeting);
+            //委托调用
+            Greet_People("Tank", English_Greeting);
+            Greet_People("李梅梅", Chinese_Greeting);
+            Console.WriteLine("======================================");
 
-            ////绑定多个事件--【方法一】
-            //GreetingDelegate delegate1;
-            ////绑定事件一
-            //delegate1 = English_Greeting;
-            ////绑定事件二
-            //delegate1 += Chinese_Greeting;
-            ////调用
-            //Greet_People("韩梅梅", delegate1);
+            //绑定多个事件--【方法一】
+            GreetingDelegate delegate1;
+            //绑定事件一
+            delegate1 = English_Greeting;
+            //绑定事件二
+            delegate1 += Chinese_Greeting;
+            //调用
+            Greet_People("韩梅梅", delegate1);
 
             Console.WriteLine("======================================");
 
@@ -47,8 +49,13 @@ namespace 委托
             //调用
             Greet_People("韩梅梅", delegate2);
 
+            Console.WriteLine("======================================");
 
-
+            //取消事件绑定
+            //取消绑定事件一
+            delegate2 -= English_Greeting;
+            //调用
+            Greet_People("龙傲天", delegate2);
             Console.ReadLine();
 
         }
