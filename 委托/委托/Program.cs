@@ -25,8 +25,23 @@ namespace 委托
 
         static void Main(string[] args)
         {
-            Greet_People("Tank", English_Greeting);
-            Greet_People("李梅梅", Chinese_Greeting);
+            //Greet_People("Tank", English_Greeting);
+            //Greet_People("李梅梅", Chinese_Greeting);
+
+            //绑定多个事件--【方法一】
+            GreetingDelegate delegate1;
+            //绑定事件一
+            delegate1 = English_Greeting;
+            //绑定事件二
+            delegate1 += Chinese_Greeting;
+            //调用
+            Greet_People("韩梅梅", delegate1);
+
+            Console.WriteLine("======================================");
+
+            //绑定多个事件--【方法二】
+
+
             Console.ReadLine();
 
         }
